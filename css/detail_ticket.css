@@ -1,0 +1,177 @@
+.info_ticket,
+.coms,
+.histo,
+.sup {
+	padding: 20px;
+	max-width: 100%;
+	background-color: #E0E0E0;
+	border-radius: 3px;
+	margin-bottom: 20px; 
+}
+
+
+.info_ticket .mi_largeur {
+	width: calc(100%/2 - 22px);
+}
+
+.info_ticket .pleine_largeur {
+	width: calc(100% - 22px);
+}
+
+input[name=edition],
+input[name=annul_edition] {
+	display: block;
+	margin: 2px 0 10px;
+}
+
+input.details {
+  display: block;
+  /*margin: 20px auto;*/
+  width: 320px;
+}
+
+div.boutons {
+  height: 30px;
+  margin: 20px;
+}
+
+.info_ticket div:not(.boutons) {
+	display: inline-block;
+	vertical-align: top;
+	min-height: 65px;
+	background-color: #F5F5F5;
+	border: solid 1px #BDBDBD;
+	border-radius: 3px;
+	padding: 5px 5px 10px;
+	margin: 5px;
+	position: relative;
+}
+
+
+.info_ticket div label {
+	font-weight: bold;
+}
+
+.info_ticket div:not(.boutons) span,
+.info_ticket div:not(.boutons) label {
+	display: block;
+	min-height: 40px;
+}
+
+.icon_imp {
+	position: absolute;
+ 	right: 5px;
+ 	top: 5px;
+}
+
+.info_ticket div select {
+  border: solid 1px transparent;
+  border-radius: 3px;
+  border: solid 1px #B9B9B9;
+  padding: 10px;
+  min-width: 80px;
+  outline: none;
+  width: calc(100% - 30px);
+  margin: 3px 0;
+  transition: all 200ms ease-in-out;
+}
+
+div label,
+div input:not(.button),
+div span {
+	display: block;
+}
+
+div input:not(.button),
+div select,
+div textarea {
+	border: solid 1px transparent;
+	border-radius: 3px;
+	border: solid 1px #B9B9B9;
+	padding: 10px;
+	min-width: 80px;
+  	outline: none;
+}
+
+div input:focus:not(.button),
+div select:focus,
+div textarea:focus {
+  transition: all 200ms ease-in-out;
+  box-shadow: 0px 0px 8px 1px rgba(0, 90, 255, .8);
+  border: solid 1px transparent;
+}
+
+div input:not(.button) {
+	width: calc(100% - 52px);
+	margin: 3px 5px;
+}
+
+div select {
+	width: calc(100% - 30px);
+	margin: 3px 0;
+}
+
+div textarea {
+	width: calc(100% - 22px);
+	resize: vertical;
+	height: 75px;
+	font-family: Arial;
+	margin: 3px 0;
+}
+
+
+/*
+ * Fichier print
+ * -------------
+ */
+
+#table_print {
+  width: 100%;
+}
+
+#table_print th {
+  text-align: left;
+}
+
+#table_print td:nth-of-type(odd) {
+  width: calc(100% / 3);
+}
+
+/*
+ * Commentaire
+ * -----------
+ */
+
+.coms .com {
+	background-color: #F5F5F5;
+	border: solid 1px #BDBDBD;
+	border-radius: 3px;
+	padding: 5px;
+	margin: 5px 0;
+}
+
+.coms .com span:nth-of-type(1) {
+	margin: 0 0 5px;
+	font-size: 11pt;
+}
+
+.coms .com p {
+	font-size: 10pt;
+}
+
+.coms label {
+	font-size: 11pt;
+	font-weight: bold;
+	margin: 10px 0 0;
+	color: #4A4A4A;
+}
+
+/*
+ * Evolutions
+ * ----------
+ */
+/*
+.histo {
+	padding: 5px;
+}
+*/

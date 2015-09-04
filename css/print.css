@@ -1,0 +1,14 @@
+.description {
+	display: table-row;
+}
+
+header,
+footer,
+button,
+img,
+nav,
+input[type=submit],
+#tri,
+br {
+	display: none;
+}

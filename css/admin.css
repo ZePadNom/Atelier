@@ -1,0 +1,160 @@
+/**
+ * admin.css
+ * =========
+ *
+ * Feuille de style pour le module d'administration
+ *
+ * Auteur : Anthony Lozano (2015), d'après la version de Emilie Graton (2012)
+ * version : 2.0.0
+ */
+
+/*
+ * Tableaux
+ * --------
+ */
+
+table {
+  margin-bottom: 30px;
+  max-width: 100%;
+  background-color: #ffffff;
+}
+
+table tbody tr {
+	background-color: #E8F5E9;
+  transition: all 150ms ease-in-out;
+}
+
+table tbody tr:nth-of-type(odd){
+	background-color: #C8E6C9; /* vert légérement plus sombre */
+}
+
+table tbody tr:hover,
+table tbody tr:active,
+table tbody tr:focus {
+  background-color: #B9F6CA;
+}
+
+/*table tbody tr:hover + tr.description,*/
+table tbody tr:active + tr.description,
+table tbody tr:focus + tr.description {
+  display: table-row;
+}
+
+table td {
+	padding: 5px;
+}
+
+table th {
+	padding: 10px;
+	background-color: #4CAF50;
+	color: #FFFFFF;
+	font-weight: bold;
+}
+
+tr.description {
+  display: none;
+  position: relative;
+}
+
+table caption {
+  text-align: left;
+  border-bottom: solid 3px #4CAF50;
+  padding: 5px;
+  margin: 2px;
+  color: #4CAF50;
+  font-size: 14pt;
+  font-weight: bold;
+}
+
+/*
+ * Séparateur des différente fonctionnalité
+ * ----------------------------------------
+ */
+
+.sep {
+  padding: 20px;
+  max-width: 100%;
+  display: block;
+  background-color: #E0E0E0;
+  border-radius: 3px;
+  margin-bottom: 20px;
+}
+
+/*
+ * Formulaires
+ * -----------
+ */
+
+label,
+form div:not(.boutons) input,
+select {
+  display: inline-block;
+  margin: 5px 5px;
+}
+
+form div:not(.boutons) input,
+select  {
+  border: solid 1px transparent;
+  border-radius: 3px;
+  border: solid 1px #B9B9B9;
+  padding: 5px;
+  min-width: 80px;
+  width: calc(100% - 50px);
+  max-width: 280px;
+  outline: none;
+  height: 30px;
+}
+
+
+form div:not(.boutons) input:focus,
+form select:focus,
+form textarea:focus {
+  transition: all 200ms ease-in-out;
+  box-shadow: 0px 0px 8px 1px rgba(0, 90, 255, .8);
+  border: solid 1px transparent;
+}
+
+input[type=submit] {
+  display: block;
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+form div:not(.boutons) {
+  display: inline-block;
+  vertical-align: top;
+  min-height: 100px;
+}
+
+form div label,
+form div:not(.boutons) input {
+  display: block;
+}
+
+.boutons {
+  width: 100%;
+  display: block;
+}
+
+.boutons input{
+  padding-left: 50px;
+  padding-right: 50px;
+  display: block;
+  margin: 10px auto;
+}
+
+ .mi_largeur {
+  width: calc(100%/2);
+}
+
+ .pleine_largeur {
+  width: 100%;
+}
+
+.sup select {
+  width: 320px;
+}
+
+.aj input {
+  width: 320px;
+}

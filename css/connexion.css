@@ -1,0 +1,58 @@
+/* connexion.css
+ * -------------
+ *
+ * Mise en page du formulaire de connexion
+ * 
+ * Auteur : Anthony Lozano (2015), d'après la version de Emilie Graton (2012)
+ * version : 2.0.0
+ */
+
+form {
+  max-width: 260px;
+  display: block;
+  margin: 10px auto;
+  background-color: #F7F7F7;
+  border-radius: 3px;
+  padding: 30px;
+}
+
+form div {
+  display: block;
+  margin: 0 10px;
+
+}
+
+form div label,
+form div span {
+  margin-top: 5px;
+  padding: 5px;
+  width: 100%;
+  display: block;
+  height: 14px;
+  font-size: 12pt;
+}
+
+form div input {
+  display: block;
+  width: calc(100% - 10px);
+  height: 30px;
+  padding: 5px;
+  border-radius: 3px;
+  border: solid 1px #B9B9B9;
+  outline: none;
+}
+
+form div label {
+  font-weight: bold;
+  font-size: 10pt;
+}
+
+form input[type=submit] {
+  display: block;
+  width: calc(100% - 10px);
+  height: 35px;
+  padding: 5px;
+  outline: none;
+  margin: 0 auto;
+}
+

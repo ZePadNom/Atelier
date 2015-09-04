@@ -1,0 +1,162 @@
+/*
+ * en-tête
+ * =======
+ */
+header {
+  min-height: 120px;
+  position: relative;
+}
+
+header + div,
+header + nav {
+  display: block;
+}
+
+header #entete > * {
+  display: inline-block;
+  vertical-align: top;
+}
+
+header .welcome_nav ul {
+}
+
+header .welcome_nav li {
+}
+
+header nav li {
+  list-style: none;
+  display: inline-block;
+}
+
+/*
+ * Logo
+ * ====
+ */
+
+#entete .logo {
+  margin: 0 15px;
+  display: inline-block;
+  height: 60px;
+  width: 106px;
+  background-image: url('../images/logomerleau2.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+/*
+ * Message d'info sur la connexion
+ * ===============================
+ */
+
+#entete .welcome_msg span {
+  display: block;
+  font-size: 10pt;
+  margin: 8px 0 5px; 
+}
+
+/*
+ * Menu haut (déco + accueil)
+ * ===============================
+ */
+
+.welcome_nav {
+  width: 270px;
+  display: inline-block;
+/*  margin: auto;
+  margin-right: 0;*/
+  float: right;
+}
+
+.welcome_nav li {
+  width: 135px;
+}
+
+/*
+ * Iconnav haut
+ * ============
+ */
+
+.iconnav_top a {
+  display: block;
+  text-decoration: none;
+  color: #010101;
+}
+
+.iconnav_top span {
+  padding: 0 5px;
+  font-size: 11pt;
+}
+
+.iconnav_top img,
+.iconnav_top span {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/*
+ * Iconnav
+ * =======
+ */
+
+.vr {
+  border-style: inset;
+  min-height: 68px;
+  margin: 3px 0 5px;
+  padding: 0 3px 3px;
+  border: solid 1px transparent;
+  border-right: solid 1px #8C8C8C;
+  vertical-align: top;
+  display: inline-block;
+}
+
+.vr:last-child {
+  border: solid 1px transparent;
+}
+
+.h {
+  width: 100%;
+  display: block;
+  font-weight: bold;
+  color: #1B5E20;
+  text-align: center;
+}
+
+.iconnav {
+  vertical-align: top;
+  display: inline-block;
+  min-width: 48px;
+  border: solid 3px transparent;
+  padding: 2px;
+  transition: all 100ms ease-in-out;
+  border-radius: 3px;
+}
+
+.iconnav a {
+  display: block;
+  text-decoration: none;
+  color: #010101;
+}
+
+.iconnav img {
+  margin: 0 auto;
+  width: 36px;
+  height: 36px;
+}
+
+.iconnav span {
+  font-size: 11pt;
+  text-align: center;
+  width: 100%;
+}
+
+.iconnav img,
+.iconnav span {
+  display: block;
+}
+
+.iconnav:hover {
+  border: solid 3px #4CAF50;
+  background-color: #C8E6C9;
+  transform: scale(1.25);
+  box-shadow: rgba(0, 0, 0, 0.5) 0px 2px 5px 0px;
+}

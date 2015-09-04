@@ -1,0 +1,170 @@
+/* creer_ticket.css
+ * ----------------
+ *
+ * Mise en page du formulaire pour créer un ticket
+ * 
+ * Auteur : Anthony Lozano (2015), d'après la version de Emilie Graton (2012)
+ * version : 2.1.2
+ */
+
+#new_ticket {
+	padding: 20px;
+	max-width: 600px;
+	background-color: #F7F7F7;
+	border-radius: 3px;
+}
+
+#new_ticket div:not(#boutons) {
+	display: inline-block;
+	vertical-align: top;
+	min-height: 100px;
+}
+
+#new_ticket .mi_largeur {
+	width: calc(100%/2);
+}
+
+#new_ticket .pleine_largeur {
+	width: 100%;
+}
+
+
+#new_ticket div label,
+#new_ticket div:not(#boutons) input,
+#new_ticket div span {
+	display: block;
+}
+
+#new_ticket div:not(#boutons) input,
+#new_ticket div select,
+#new_ticket div textarea {
+	border: solid 1px transparent;
+	border-radius: 3px;
+	border: solid 1px #B9B9B9;
+	padding: 10px;
+	min-width: 80px;
+  	outline: none;
+}
+
+#new_ticket div:not(#boutons) input:focus,
+#new_ticket div select:focus,
+#new_ticket div textarea:focus {
+  transition: all 200ms ease-in-out;
+  box-shadow: 0px 0px 8px 1px rgba(0, 90, 255, .8);
+  border: solid 1px transparent;
+}
+
+#new_ticket div:not(#boutons) input {
+	width: calc(100% - 52px);
+	margin: 3px 5px;
+}
+
+#new_ticket div select {
+	width: calc(100% - 30px);
+	margin: 3px 0;
+}
+
+#new_ticket div textarea {
+	width: calc(100% - 22px);
+	resize: vertical;
+	height: 75px;
+	font-family: Arial;
+	margin: 3px 0;
+}
+
+/*#new_ticket #boutons input {
+  display: inline-block;
+  height: 35px;
+  padding: 5px;
+  border-radius: 3px;
+  outline: none;
+  margin: 0 auto;
+  background: linear-gradient(#4CAF50, #43A047);
+  border: solid 1px #1B5E20;
+  font-weight: bold;
+  color: #FFFFFF;
+}*/
+
+#new_ticket #boutons {
+	margin: 10px 0;
+	min-height: 50px;
+}
+
+#new_ticket div select[name=importance] {
+	max-width: calc(100% - 100px); 
+}
+
+#new_ticket .info {
+	max-width: calc(100% - 66px);
+	margin: 3px 5px 3px;
+	padding: 5px 5px 5px 36px;
+	border-radius: 3px;
+	background-color: rgba(0, 0, 0, 0.0);
+	border: solid 1px rgba(0, 0, 0, 0.0);
+	font-size: 9pt;
+	color: rgba(0, 0, 0, 0.0);
+	visibility: hidden;
+	transition: all 250ms ease-in-out;
+	position: relative;
+	background-image: url(../images/iconnav/info.svg);
+	background-size: 36px;  
+	background-repeat: no-repeat;
+}
+
+#new_ticket .info > * {
+	visibility: hidden;
+}
+
+#new_ticket #titre:focus ~ .info,
+#new_ticket #titre:focus ~ .info,
+#new_ticket #description:focus ~ .info,
+#new_ticket #description:focus ~ .info{
+	visibility: visible;
+	color: #1F1F1F;
+	background-color: #FFFFD2;
+	border: solid 1px #626200;
+  	z-index: 0;
+}
+
+
+.info:before {
+  top: -14px;
+  left: 5px;
+  border-width: 0 14px 14px;
+  z-index: 1;
+}
+.info:after {
+  top: -13px;
+  left: 6px;
+  border-width: 0 13px 13px;
+  z-index: 2;
+}
+
+.info:after,
+.info:before {
+  content: "";
+  display: block;
+  position: absolute;
+  border-style: solid;
+  width: 0;
+  border-color: transparent;
+  transition: all 250ms ease-in-out;
+}
+
+#titre:focus ~ .info:before,
+#description:focus ~ .info:before {
+  border-color: #626200 transparent;
+}
+
+#titre:focus ~ .info:after,
+#description:focus ~ .info:after {
+  border-color: #FFFFD2 transparent;
+}
+
+.cache {
+  visibility: hidden;
+}
+
+.erreur {
+  visibility: visible;
+}
