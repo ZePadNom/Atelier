@@ -186,13 +186,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		$lieu = $categorie = $importance = $agent = 1;
 		$_POST = array();
 		unset($_POST);
-		$_SESSION['msg'] = 'Ticket correct !<br> Le formulaire est <b>correct</b>, et votre ticket à bien été ajouter !<br>Vous pouvez faire un <b>nouvel ajout</b> si vous le souhaitez.';
+		$_SESSION['msg'] = 'Ticket correct !<br> Le formulaire est <b>correct</b>, et votre ticket à bien été ajouté !<br>Vous pouvez faire un <b>nouvel ajout</b> si vous le souhaitez.';
 		header('location: '.$_SERVER['PHP_SELF']);
 		exit();
 
 	} else {
 
-		$snackbar = 'Le formulaire est <b>incorrect</b>, certaine données sont érronés ou absente.';
+		$snackbar = 'Le formulaire est <b>incorrect</b>, certaines données sont érronées ou absentes.';
 		
 	}
 

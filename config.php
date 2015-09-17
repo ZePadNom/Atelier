@@ -15,7 +15,7 @@
  * @constant PHP_PATH Chemin 'racine' pour créer les liens en PHP (propre au serveur)
  */
 
-define('HTML_PATH', '/~LOZANOA/'.basename(__DIR__).'/');
+define('HTML_PATH', '/'.basename(__DIR__).'/');
 define('PHP_PATH', __DIR__.'/');
 
 /**
