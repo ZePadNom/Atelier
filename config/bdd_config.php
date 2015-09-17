@@ -9,9 +9,9 @@
  * @constant HOTE 
  */
 
-define("BDD", 'atelier_v2');
-define("USR", 'LOZANOA');
-define("MDP", 'oaYPQp');
+define("BDD", 'atelier');
+define("USR", 'root');
+define("MDP", '');
 define("HOTE", 'localhost');
 
 ?>
