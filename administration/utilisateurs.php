@@ -234,7 +234,7 @@ function listerClasse($num, PDO $pdo) {
 	$res = $pdo->query($sql);
 	$table = $res->fetchAll(PDO::FETCH_ASSOC);
 
-	$liste = '<select name="classe" required>'."\n";
+	$liste = '<select class="lg" name="classe" required>'."\n";
 	foreach ($table as $row){
 
 		$selected = $row['NUM'] == $num ? $selected = 'selected' : "";
@@ -260,7 +260,7 @@ function listerAgent($num, PDO $pdo) {
 	$res = $pdo->query($sql);
 	$table = $res->fetchAll(PDO::FETCH_ASSOC);
 
-	$liste = '<select name="agent">'."\n";
+	$liste = '<select class="lg" name="agent">'."\n";
 	foreach ($table as $row){
 
 		$selected = "";
