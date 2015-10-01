@@ -11,7 +11,7 @@
 			<label for ='nom'>Nom</label><input id='nom' name='nom' type='text'/><br/>
 			<label for ='prenom'>Prénom</label><input id='prenom' name='prenom' type='text'/><br/>
 			<label>Classe :</label>
-				<select class="lg" id='classe' name='classe'>
+				<select id='classe' name='classe'>
 				<?php
 					$reqClasse = $bdd->query('Select * from classe order by nom');
 					while($class = $reqClasse->fetch())

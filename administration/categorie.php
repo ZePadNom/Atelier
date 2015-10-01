@@ -67,12 +67,12 @@ $pdo_erreur = FALSE;
 				$pdo_erreur = TRUE;
 			}
 
-			$snackbar = $pdo_erreur ? "Désolé mais une erreur est apparue, impossible d'ajouter la catégorie".'<br><span>'.$pdoe->getMessage().'</span>'
-									: "La catégorie \"$categorie\" a correctement été ajouté !";
+			$snackbar = $pdo_erreur ? "Désolé mais une erreur est apparue, impossible d'ajouté le categorie".'<br><span>'.$pdoe->getMessage().'</span>'
+									: "La categorie \"$categorie\" a correctement été ajouté !";
 
 		} else {
 
-			$snackbar = "La catégorie que vous avez rentré est incorrect.";
+			$snackbar = "La categorie que vous avez rentré est incorrect.";
 
 		}
 
@@ -95,7 +95,7 @@ $pdo_erreur = FALSE;
 			}
 
 			$snackbar = $pdo_erreur ? "Désolé mais une erreur est apparue, impossible d'ajouté le categorie".'<br>'.'<br><span>'.$pdoe->getMessage().'</span>'
-									: "La catégorie a correctement été supprimé&nbsp;!";
+									: "La categorie a correctement été supprimé&nbsp;!";
 
 	}
 
@@ -120,8 +120,8 @@ $pdo_erreur = FALSE;
 
 		}
 
-		$snackbar = $pdo_erreur ? "Désolé mais une erreur est apparue. Impossible de modifier les catégories".'<br>'.'<br><span>'.$pdoe->getMessage().'</span>'
-								: "Les catégories ont correctement été modifiées !";
+		$snackbar = $pdo_erreur ? "Désolé mais une erreur est apparue, impossible de modifier les categories".'<br>'.'<br><span>'.$pdoe->getMessage().'</span>'
+								: "Les catégories ont correctement été modifiée&nbsp;!";
 
 	}
 
@@ -139,7 +139,7 @@ function listerCategorie($num, PDO $pdo) {
 	$res = $pdo->query($sql);
 	$table = $res->fetchAll(PDO::FETCH_ASSOC);
 
-	$liste = '<select class="lg" name="categorie" required>'."\n";
+	$liste = '<select name="categorie" required>'."\n";
 	foreach ($table as $row){
 
 		$selected = "";
@@ -271,11 +271,11 @@ function listerModCateg(PDO $pdo) {
 					<p>Ajoutez une catégorie en remplissant le formulaire ci-dessous.</p>
 					<form method="post" action="<?php htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
 						<div class="pleine_largeur">
-							<label for="nom_categorie">Nom de la catégorie</label>
+							<label for="nom_categorie">Nom de la categorie</label>
 							<input type="text" id="nom_categorie" name="nom_categorie" required placeholder="Nom du categorie ...">
 						</div><!--
 					 --><div class="boutons">
-							<input class="button" type="submit" name="nv_categorie" value="Ajouter la catégorie">
+							<input class="button" type="submit" name="nv_categorie" value="Ajouter la categorie">
 						</div>
 					</form>
 				</div>
@@ -291,7 +291,7 @@ function listerModCateg(PDO $pdo) {
 							?>
 						</div><!--
 					 --><div class="boutons">
-							<input class="button" type="submit" name="sup_categorie" value="Supprimer la catégorie">
+							<input class="button" type="submit" name="sup_categorie" value="Supprimer la categorie">
 						</div>
 					</form>
 				</div>

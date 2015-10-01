@@ -87,13 +87,13 @@ table caption {
 
 label,
 form div:not(.boutons) input,
-select.lg {
+select {
   display: inline-block;
   margin: 5px 5px;
 }
 
 form div:not(.boutons) input,
-select.lg  {
+select  {
   border: solid 1px transparent;
   border-radius: 3px;
   border: solid 1px #B9B9B9;
@@ -107,7 +107,7 @@ select.lg  {
 
 
 form div:not(.boutons) input:focus,
-form select.lg:focus,
+form select:focus,
 form textarea:focus {
   transition: all 200ms ease-in-out;
   box-shadow: 0px 0px 8px 1px rgba(0, 90, 255, .8);
@@ -151,7 +151,7 @@ form div:not(.boutons) input {
   width: 100%;
 }
 
-.sup select.lg {
+.sup select {
   width: 320px;
 }
 
