@@ -35,6 +35,7 @@ include_once $_SESSION['PHP_PATH'] . "php/snackbar.php";
 	echo '<title>'.$titre_page.'</title>';
 
 	?>
+	<link rel="stylesheet" type="text/css" href="../css/admin.css">
 </head>
 <body>
 	<div id="page">
@@ -47,9 +48,23 @@ include_once $_SESSION['PHP_PATH'] . "php/snackbar.php";
 
 		<section>
 		<h1>Purger les données de la base</h1>
-		<p>Cette page supprime les tickets placés dans l'historique qui ont été validé depuis <b>plus de 2 ans</b>.</p>
+		<p>Cette page supprime les tickets placés dans l'historique qui ont été validé depuis une durée choisie.</p>
 			<div class="container">
-				<p>Désolé mais les fonctionnalité(s) de cette page n'ont pas été implémentée(s).</p>
+				<div class="sep li">
+					<h2>Purger les tickets</h2>
+					<form method="Post">
+						<p>
+							Sélectionner les tickets validés depuis 
+							<input type="number" min="1" max="11" name="duree1" id="duree1" value="<?= isset($_POST["duree1"]) ? $_POST["duree1"] : "2" ?>">
+							<select name="duree2" id="duree2">
+								<?php $value = isset($_POST["duree2"]) ?  $_POST["duree2"] : "mois" ?>
+								<option value="mois" <?= $value=="mois" ? "selected": "" ?> >mois</option>
+								<option value="ans" <?= $value=="ans" ? "selected": "" ?> >ans</option>
+							</select>
+						</p>
+						<input class="button" type="submit" value="Purger">
+					</form>
+				</div>
 			</div>
 		</section>
 

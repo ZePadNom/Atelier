@@ -21,7 +21,7 @@ include_once $_SESSION['PHP_PATH'] . "php/snackbar.php";
 /*
  * Nb tickets
  */
-$sql = "SELECT COUNT(*) AS `NB_TICKETS` FROM `TICKET`;";
+$sql = "SELECT COUNT(*) AS `NB_TICKETS` FROM `TICKET` ;";
 try {
 	$res = $bdd->query($sql);
 	$table = $res->fetch(PDO::FETCH_ASSOC);
@@ -93,10 +93,10 @@ try {
 
 $nb_tickets_cloture = $table['NB_TICKETS'];
 if ($nb_tickets != 0) {
-	$prc_attribuer = $nb_tickets_attribuer == 0 . "%" ? 0 : round($nb_tickets_attribuer / $nb_tickets * 100 ). "%";
-	$prc_encours = $nb_tickets_encours == 0 . "%" ? 0 : round($nb_tickets_encours / $nb_tickets * 100 ). "%";
-	$prc_attente = $nb_tickets_attente == 0 . "%" ? 0 : round($nb_tickets_attente / $nb_tickets * 100 ). "%";
-	$prc_resolu = $nb_tickets_resolu == 0 . "%" ? 0 : round($nb_tickets_resolu / $nb_tickets * 100 ). "%";
+	$prc_attribuer = $nb_tickets_attribuer == 0 . "%" ? 0 : round($nb_tickets_attribuer / ($nb_tickets-$nb_tickets_cloture) * 100 ). "%";
+	$prc_encours = $nb_tickets_encours == 0 . "%" ? 0 : round($nb_tickets_encours / ($nb_tickets-$nb_tickets_cloture) * 100 ). "%";
+	$prc_attente = $nb_tickets_attente == 0 . "%" ? 0 : round($nb_tickets_attente / ($nb_tickets-$nb_tickets_cloture) * 100 ). "%";
+	$prc_resolu = $nb_tickets_resolu == 0 . "%" ? 0 : round($nb_tickets_resolu / ($nb_tickets-$nb_tickets_cloture) * 100 ). "%";
 } else {
 	$prc_attribuer = $prc_encours = $prc_attente = $prc_resolu = "0%";
 }
@@ -154,7 +154,6 @@ if ($nb_tickets != 0) {
 							<var><?php echo $prc_encours ?></var><span> en cours</span>
 							<var><?php echo $prc_attente ?></var><span> en attente</span>
 							<var><?php echo $prc_resolu ?></var><span> résolu</span>
-							<!-- <var></var><span> cloturé</span> -->
 						</div>
 					</div>
 					<?php 

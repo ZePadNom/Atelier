@@ -139,7 +139,7 @@ function listerLieu($num, PDO $pdo) {
 	$res = $pdo->query($sql);
 	$table = $res->fetchAll(PDO::FETCH_ASSOC);
 
-	$liste = '<select name="lieu" required>'."\n";
+	$liste = '<select class="lg" name="lieu" required>'."\n";
 	foreach ($table as $row){
 
 		$selected = "";
