@@ -23,6 +23,71 @@ session_start();
 include_once $_SESSION['PHP_PATH'] . "struct/session.php";
 include_once $_SESSION['PHP_PATH'] . "bdd/t_connex_bd.php";
 include_once $_SESSION['PHP_PATH'] . "php/snackbar.php";
+
+//Si l'utilisateur a envoyer le formulaire
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+	
+	// Initialisation des variables d'erreur	
+	$chiffre_err = $date_err = FALSE;
+
+	/*
+	Verification que l'element envoyer est bien numérique
+	*/
+	if (!is_int($_POST['duree1'])){
+		$chiffre_err = TRUE;
+	} else {
+		$chiffre = $_POST['duree1'];
+	}
+
+	/*
+	Verification que l'element envoyer est bien en mois ou en année
+	*/
+
+	if ($_POST['duree2'] != 'month' || $_POST['duree2'] != 'year'){
+		$date_err = TRUE;
+	} else {
+		$date = $_POST['duree2'];
+	}
+
+	/*
+	 * Si le chiffre & l'année ou le mois sont correct, on execute
+	 */
+	if (!($chiffre_err && $date_err)) {
+		/*
+		* Si il s'agit d'une année selectionner on entre dans le if
+		* Sinon on execute le else pour les mois
+		*/
+		if ($_POST['duree2'] == "year") {
+			/*
+			* Requete de recuperation en fonction de l'année
+			*/
+			$annee = date(Y)- $_POST['duree2'];
+			$sql = "SELECT `ID`, `ID_RESPONSABLE`, `NUM_CATEGORIE`, `NUM_LIEU`, `NUM_STATUT`, `ID_CREATEUR`, `NUM_IMPORTANCE`, `TITRE`, `DESCRIPTION`, `D_OUVERTURE`, `H_OUVERTURE`, `D_CLOTURE` \n"
+			 		."FROM `ticket` \n"
+			 		."WHERE Year(`D_CLOTURE`) NOT BETWEEN Year(`D_CLOTURE`) AND ".$annee."";
+
+			$res = $bdd->query($sql);
+			$table = $res->fetch(PDO::FETCH_ASSOC);	
+						
+		} else {
+			/*
+			* Requete de recuperation en fonction du mois
+			*/
+			$mois = date(m)- $_POST['duree2'];
+			$sql = "SELECT `ID`, `ID_RESPONSABLE`, `NUM_CATEGORIE`, `NUM_LIEU`, `NUM_STATUT`, `ID_CREATEUR`, `NUM_IMPORTANCE`, `TITRE`, `DESCRIPTION`, `D_OUVERTURE`, `H_OUVERTURE`, `D_CLOTURE` \n"
+			 		."FROM `ticket` \n"
+			 		."WHERE month(`D_CLOTURE`) NOT BETWEEN month(`D_CLOTURE`) AND ".$mois."";
+
+			$res = $bdd->query($sql);
+			$table = $res->fetch(PDO::FETCH_ASSOC); 		
+		}
+
+		
+		
+	}
+
+}	
+
 ?>
 <!DOCTYPE html>
 <html lang="fr-FR">
@@ -55,11 +120,11 @@ include_once $_SESSION['PHP_PATH'] . "php/snackbar.php";
 					<form method="Post">
 						<p>
 							Sélectionner les tickets validés depuis 
-							<input type="number" min="1" max="11" name="duree1" id="duree1" value="<?= isset($_POST["duree1"]) ? $_POST["duree1"] : "2" ?>">
+							<input type="number" min="1" max="12" name="duree1" id="duree1" value="<?= isset($_POST["duree1"]) ? $_POST["duree1"] : "2" ?>">
 							<select name="duree2" id="duree2">
 								<?php $value = isset($_POST["duree2"]) ?  $_POST["duree2"] : "mois" ?>
-								<option value="mois" <?= $value=="mois" ? "selected": "" ?> >mois</option>
-								<option value="ans" <?= $value=="ans" ? "selected": "" ?> >ans</option>
+								<option value="month" <?= $value=="mois" ? "selected": "" ?> >mois</option>
+								<option value="year" <?= $value=="ans" ? "selected": "" ?> >ans</option>
 							</select>
 						</p>
 						<input class="button" type="submit" value="Purger">

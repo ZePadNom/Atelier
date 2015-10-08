@@ -71,9 +71,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	 * -------
 	 */
 	if (isset($_POST['cloturer'])) {
-
+		
 		$sql = "UPDATE `TICKET`
-				SET `NUM_STATUT` = '5'
+				SET `NUM_STATUT` = '5', `D_CLOTURE` = CURDATE()
 				WHERE `ID` = $id_ticket;";
 		
 		try {

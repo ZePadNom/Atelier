@@ -92,7 +92,7 @@ try {
 }
 
 $nb_tickets_cloture = $table['NB_TICKETS'];
-if ($nb_tickets != 0) {
+if ($nb_tickets != 0 && $nb_tickets!=$nb_tickets_cloture) {
 	$prc_attribuer = $nb_tickets_attribuer == 0 . "%" ? 0 : round($nb_tickets_attribuer / ($nb_tickets-$nb_tickets_cloture) * 100 ). "%";
 	$prc_encours = $nb_tickets_encours == 0 . "%" ? 0 : round($nb_tickets_encours / ($nb_tickets-$nb_tickets_cloture) * 100 ). "%";
 	$prc_attente = $nb_tickets_attente == 0 . "%" ? 0 : round($nb_tickets_attente / ($nb_tickets-$nb_tickets_cloture) * 100 ). "%";
