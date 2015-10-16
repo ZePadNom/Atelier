@@ -18,7 +18,7 @@
  * @param  PDO    $pdo      Instance de l'objet PDO permettant de dialoguer avec la base de donnée
  * @return string           Renvoie les résultat dans des tableaux HTML 
  */
-function grouperTicket($regroup, array $order_by, $ordre, $action, PDO $pdo) {
+function grouperTicket($regroup, array $order_by, $ordre, $action, PDO $pdo, $datePurge = null) {
 
 	$regroup = strtoupper($regroup);
 	$ordre = strtoupper($ordre);
@@ -501,7 +501,7 @@ function grouperTicket($regroup, array $order_by, $ordre, $action, PDO $pdo) {
 
 		$thead .= '<th class="detail">Détails</th>';
 
-		if ($action == 'encours' || $action == 'tous') {
+		if ($action == 'encours' || $action == 'tous'|| $action == 'attribuer') {
 			$thead .= '<th class="icoprint">'.'<img alt="Imprimer" src="../images/iconnav/print.png">'.'</th>';
 		}
 

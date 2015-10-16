@@ -34,8 +34,8 @@ header("Refresh: 7; URL=index.php");
 		<section class="inconnu">
 			<div class="container">
 				<h2>Désolé</h2>
-				<p>Mais il semble que vous n'êtes pas authentifié, ou que votre session à expirée<small> (brigand).</small></p>
-				<p>Vous allez être redirigé vers la page de connexion dans quelque seconde, ou cliquez sur le lien ci-dessous</p>
+				<p>Mais il semble que vous n'êtes pas authentifié, ou que votre session à expirée <small>(brigand)</small>.</p>
+				<p>Vous allez être redirigé vers la page de connexion dans quelques secondes, ou cliquez sur le lien ci-dessous</p>
 				<img src="images/ajax-loader.gif" alt="Patientez ...">
 				<a href="index.php" title="Connexion">Page de connexion</a>
 			</div>

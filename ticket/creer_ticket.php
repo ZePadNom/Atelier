@@ -112,7 +112,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		 * - Soit le formualire est incomplet avec au minimum titre et description, le ticket vas dans "à attribuer"
 		 */
 
-		if (!($importance_err || $agent_err || $lieu_err || $categorie_err)) {
+		if (!($importance_err && $agent_err && $lieu_err && $categorie_err && $image_err)) {
 			
 			/*
 			 * Cas 1
@@ -231,7 +231,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 			<p>Les champs indiqués par un * sont obligatoires. L'<b>importance</b>, l'agent <b>responsable</b>, la <b>catégorie</b>, le <b>lieu</b> ne sont pas obligatoire, vous pourrez les spécifier plus tard si besoin.</p>
 			<p>Si <b>tout</b> les champs sont remplis correctement le ticekt sera directement "En cours", sinon il sera dans "Attribuer".</p>
 			<div class="container">
-				<form id="new_ticket" method="post" action="<?php htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+				<form enctype="multipart/form-data" id="new_ticket" method="post" action="<?php htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
 
 						<div class="mi_largeur">
 							<label for="titre">Titre *</label>
@@ -266,6 +266,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 							<label for="agent">Responsable du ticket</label>
 							<?php echo listerAgent($agent, $bdd); ?>	
 					 	</div><!--
+
+					 --><div class="pleine_largeur">
+					 		<label for="photo">Photo</label>
+					 		<input type="file" id="photo" name="photo">
+					 	</div><!--
+						  
 						
 					 --><div id="boutons" class="pleine_largeur">
 							<input class="button" type="submit" value="Créer le ticket">

@@ -55,6 +55,33 @@ function getFormEltTA($classe_css, $champ, $val, $label_champ) {
 
 }
 
+/**
+ * Permet de créer l'html pour afficher la photo d'un ticket
+ * @param  string 		$classe_css  nom des classes à appliquer sur la div
+ * @param  string 		$champ       id du champ
+ * @param  string 		$label_champ label à afficher
+ * @param  imageTicket  $image 		 Objet imageTicket
+ * @param  boolean = false	$input 	 Ajout ou non de l'input sous l'image 
+ * @return [type]              [description]
+ */
+function getFormFile($classe_css, $champ, $label_champ, $image, $input = false) {
+
+	$input = $input ? '<input type="file" id="'.$champ.'" name="'.$champ.'"/>' : '';
+
+	$elt = '-->'
+		 . '<div class="'.$classe_css.'">'
+		 . '<label for="'.$champ.'">'.$label_champ.'</label>'
+		 . '<a href="'.$image->get("original").'" >'
+		 . '<img src="'.$image->get('medium').'" alt="illustration-ticket">'
+		 . '</a>'
+		 . $input
+		 . '</div>'
+		 . '<!--';
+
+	return $elt;
+
+}
+
 function getDetails($action, $id_ticket, $pdo) {
 
 		// récupération du ticket
@@ -84,6 +111,9 @@ function getDetails($action, $id_ticket, $pdo) {
 
 			$id_responsable = $row['ID_RESPONSABLE'];
 			$nom_responsable = $row['NOM_RESPONSABLE'];
+
+			include_once '../php/image_ticket.php';
+			$image = new ImageTicket($id_ticket);
 
 		}
 
@@ -120,6 +150,7 @@ function getDetails($action, $id_ticket, $pdo) {
 						  . getFormSelect('mi_largeur highlight', listerCategorie($num_categorie, $pdo), 'Catégorie')
 						  . getFormSelect('mi_largeur highlight', listerAgent($id_responsable, $pdo), 'Agent')
 						  . getFormElt('mi_largeur', $nom_statut, 'Statut')
+						  . '--><div class="pleine_largeur"><label for="photo">Photo</label><a href="http://lorempixel.com/1200/900/technics/3/"><img src="http://lorempixel.com/550/300/technics/3/"></a></div><!--'
 						  . '-->'
 						  . '<!--'
 						  . '-->'
@@ -139,6 +170,7 @@ function getDetails($action, $id_ticket, $pdo) {
 						  . getFormElt('mi_largeur', $nom_categorie, 'Catégorie')
 						  . getFormElt('mi_largeur', $nom_responsable, 'Agent')
 						  . getFormElt('mi_largeur', $nom_statut, 'Statut')
+						  . '--><div class="pleine_largeur"><label for="photo">Photo</label><a href="http://lorempixel.com/1200/900/technics/3/"><img src="http://lorempixel.com/550/300/technics/3/"></a></div><!--'
 						  . '-->'
 						  . '<div class="boutons">'
 						  . '<input type="submit" name="resoudre" class="button details" value="Résoudre le ticket">'
@@ -169,6 +201,7 @@ function getDetails($action, $id_ticket, $pdo) {
 						  . getFormElt('mi_largeur', $nom_categorie, 'Catégorie')
 						  . getFormElt('mi_largeur', $nom_responsable, 'Agent')
 						  . getFormElt('mi_largeur', $nom_statut, 'Statut')
+						  . '--><div class="pleine_largeur"><label for="photo">Photo</label><a href="http://lorempixel.com/1200/900/technics/3/"><img src="http://lorempixel.com/550/300/technics/3/"></a></div><!--'
 						  . '-->'
 						  . '<!--'
 						  . '-->'
@@ -178,7 +211,6 @@ function getDetails($action, $id_ticket, $pdo) {
 				break;
 
 			case 'edition':
-				
 				$details .= getFormEltInput('mi_largeur', 'titre', $titre, 'Titre')
 						  . getFormSelect('mi_largeur', listerImportance($num_importance, $pdo).getIconImportance($num_importance), 'Importance')
 						  . getFormEltTA('pleine_largeur', 'description', $description, 'Description')
@@ -186,6 +218,7 @@ function getDetails($action, $id_ticket, $pdo) {
 						  . getFormSelect('mi_largeur', listerCategorie($num_categorie, $pdo), 'Catégorie')
 						  . getFormSelect('mi_largeur', listerAgent($id_responsable, $pdo), 'Agent')
 						  . getFormElt('mi_largeur', $nom_statut, 'Statut')
+						  . getFormFile('pleine_largeur', 'photo', 'Photo', $image, true)
 						  . '-->'
 						  . '<!--'
 						  . '-->'
@@ -204,8 +237,9 @@ function getDetails($action, $id_ticket, $pdo) {
 						  . getFormElt('mi_largeur', $nom_lieu, 'Lieu')
 						  . getFormElt('mi_largeur', $nom_categorie, 'Catégorie')
 						  . getFormElt('mi_largeur', $nom_responsable, 'Agent')
-						  . getFormElt('mi_largeur', $nom_statut, 'Statut');
-				
+						  . getFormElt('mi_largeur', $nom_statut, 'Statut')
+						  . '--><div class="pleine_largeur"><label for="photo">Photo</label><a href="http://lorempixel.com/1200/900/technics/3/"><img src="http://lorempixel.com/550/300/technics/3/"></a></div><!--';
+						  
 				break;
 			
 			default:
@@ -216,7 +250,8 @@ function getDetails($action, $id_ticket, $pdo) {
 						  . getFormElt('mi_largeur', $nom_lieu, 'Lieu')
 						  . getFormElt('mi_largeur', $nom_categorie, 'Catégorie')
 						  . getFormElt('mi_largeur', $nom_responsable, 'Agent')
-						  . getFormElt('mi_largeur', $nom_statut, 'Statut');
+						  . getFormElt('mi_largeur', $nom_statut, 'Statut')
+						  . '--><div class="pleine_largeur"><label for="photo">Photo</label><a href="http://lorempixel.com/1200/900/technics/3/"><img src="http://lorempixel.com/550/300/technics/3/"></a></div><!--';
 
 				
 				break;
