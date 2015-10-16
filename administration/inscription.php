@@ -3,7 +3,7 @@
 	include("include/verif.php");
 	include('./php/t_connex_bd.php');
 ?>
-<div id="new_utimisateur">
+<div id="new_utilisateur">
 <h1>Création d'un nouvel utilisateur</h1>
 	<form id='inscription' method='post' action='t_new_utilisateur.php'>
 		<fieldset>

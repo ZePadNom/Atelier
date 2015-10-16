@@ -5,10 +5,8 @@
  * @author Emilie Graton (V. 1 - 2012)
  * @author Anthony Lozano (2015)
  *
- * @version  2.0.1
+ * @version  2.0.0
  */
-
-session_start();
 
 /*
  * Inclusion(s)
@@ -16,12 +14,10 @@ session_start();
  * ~ Session
  * ~ Connexion à la base
  * ~ Module de tri
- * ~ Snack bar (message d'info)
  */
-include_once $_SESSION['PHP_PATH'] . "struct/session.php";
-include_once $_SESSION['PHP_PATH'] . "bdd/t_connex_bd.php";
-include_once $_SESSION['PHP_PATH'] . "php/classer_tickets.php";
-include_once $_SESSION['PHP_PATH'] . "php/snackbar.php";
+include_once "../struct/session.php";
+include_once "../php/t_connex_bd.php";
+include_once "../php/classer_tickets.php";
 
 
 $_SESSION['action'] = 'tous';

@@ -7,7 +7,6 @@
  * @version  1.0.0
  */
 
-session_start();
 
 /*
  * Inclusion(s)
@@ -17,15 +16,15 @@ session_start();
  * ~ Module de tri
  * ~ Snack bar (message d'info)
  */
-include_once $_SESSION['PHP_PATH'] . "struct/session.php";
-include_once $_SESSION['PHP_PATH'] . "bdd/t_connex_bd.php";
-include_once $_SESSION['PHP_PATH'] . "php/classer_tickets.php";
-include_once $_SESSION['PHP_PATH'] . "php/snackbar.php";
+include_once "../struct/session.php";
+include_once "../php/t_connex_bd.php";
+include_once "../php/classer_tickets.php";
+include_once "../php/snackbar.php";
 
 if ($_SESSION['usr_connected']['classe'] == 3){
 
 	$_SESSION['msg'] = "Vous n'avez pas l'autorisation d'accèder à cette page.";
-	header('Location: '.$_SESSION['HTML_PATH'].'accueil.php');
+	header('Location: ../accueil.php');
 	exit();
 
 }

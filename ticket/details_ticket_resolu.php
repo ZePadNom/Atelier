@@ -8,9 +8,9 @@
  * @version  2.0.2
  */
 
-session_start();
 
-/**
+
+/*
  * Inclusion(s)
  * ------------
  * ~ Session
@@ -25,17 +25,17 @@ session_start();
  * ~ Accesseur ticket
  * ~ Accesseur détails
  */
-include_once $_SESSION['PHP_PATH'] . "struct/session.php";
-include_once $_SESSION['PHP_PATH'] . "bdd/t_connex_bd.php";
-include_once $_SESSION['PHP_PATH'] . "php/get_icon_importance.php";
-include_once $_SESSION['PHP_PATH'] . "php/listes_formulaire.php";
-include_once $_SESSION['PHP_PATH'] . "php/snackbar.php";
-include_once $_SESSION['PHP_PATH'] . 'php/detail_back.php';
-include_once $_SESSION['PHP_PATH'] . "ticket/commentaire/commentaire.php";
-include_once $_SESSION['PHP_PATH'] . "ticket/evolution/evolution.php";
-include_once $_SESSION['PHP_PATH'] . "ticket/supprimer.php";
-include_once $_SESSION['PHP_PATH'] . "ticket/get_ticket.php";
-include_once $_SESSION['PHP_PATH'] . "ticket/get_details.php";
+include_once "../struct/session.php";
+include_once "../php/t_connex_bd.php";
+include_once "../php/get_icon_importance.php";
+include_once "../php/listes_formulaire.php";
+include_once "../php/snackbar.php";
+include_once '../php/detail_back.php';
+include_once "commentaire/commentaire.php";
+include_once "evolution/evolution.php";
+include_once "supprimer.php";
+include_once "get_ticket.php";
+include_once "get_details.php";
 
 // Récupération de l'identifiant de l'utilisateur connecté
 

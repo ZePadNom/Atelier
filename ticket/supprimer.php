@@ -53,7 +53,7 @@ function supprimer($id_ticket, PDO $pdo) {
 
 	unset($_GET);
 
-	header('location: /~LOZANOA/atelier_v2/accueil.php');
+	header('location: /atelier_v2/accueil.php');
 
 }
 

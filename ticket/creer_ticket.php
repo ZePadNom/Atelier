@@ -8,8 +8,6 @@
  * @version  2.0.3
  */
 
-session_start();
-
 /*
  * Inclusion(s)
  * ------------
@@ -20,12 +18,12 @@ session_start();
  * ~ Snackbar
  * ~ Module evolution
  */ 
-include_once $_SESSION['PHP_PATH'] . "php/test_input.php";
-include_once $_SESSION['PHP_PATH'] . "struct/session.php";
-include_once $_SESSION['PHP_PATH'] . "bdd/t_connex_bd.php";
-include_once $_SESSION['PHP_PATH'] . "php/listes_formulaire.php";
-include_once $_SESSION['PHP_PATH'] . "php/snackbar.php";
-include_once $_SESSION['PHP_PATH'] . "ticket/evolution/evolution.php";
+include_once "../php/test_input.php";
+include_once "../struct/session.php";
+include_once "../php/t_connex_bd.php";
+include_once "../php/listes_formulaire.php";
+include_once "../php/snackbar.php";
+include_once "evolution/evolution.php";
 
 
 // Si l'utilisateur a envoyer le formulaire
@@ -279,11 +277,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		<?php
 
 		// Inclusion du pied de page (footer)
-		include_once $_SESSION['PHP_PATH'] . "struct/footer.php";
+		include_once "../struct/footer.php";
 
 		?>
 
 	</div>
-<script type="text/javascript" src="<?php echo $_SESSION['HTML_PATH']; ?>js/valid_form.js"></script>
+<script type="text/javascript" src="../js/valid_form.js"></script>
 </body>
 </html>

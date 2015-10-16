@@ -14,28 +14,12 @@
 /*
  * Inclusion(s)
  * ------------
- * ~ Constantes de configurations
- */
-require_once "config.php";
-
-
-// Remplissage de la session
-session_start();
-
-// Chemins
-$_SESSION['HTML_PATH'] = HTML_PATH;
-$_SESSION['PHP_PATH'] = PHP_PATH;
-
-/*
- * Inclusion(s)
- * ------------
  * ~ Fonction test_input($data){}
- * ~ Instance de PDO
  * ~ Snack bar (message d'info)
  */
-require_once PHP_PATH . "php/test_input.php";
-require_once PHP_PATH . "bdd/t_connex_bd.php";
-include_once PHP_PATH . "php/snackbar.php";
+include_once "php/test_input.php";
+include_once "php/snackbar.php";
+
 
 // Déclaration des variables à vide
 $id = $mdp = "";
@@ -70,42 +54,51 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		$mdp = test_input($_POST["password"]);
 	}
 
+
+
 	if (!($id_err && $mdp_err)) {
+  		// Inclusion de l'instance de l'objet PDO
+		include_once('php/t_connex_bd.php');
 
-		$sql = "SELECT `ID`, `UTILISATEUR`.`NOM` AS `NOM`, `PRENOM`, `TEL`, `MAIL`, `UTILISATEUR`.`NUM_CLASSE` AS `CLASSE`, `CLASSE`.`NOM` AS `TYPE_DE_COMPTE`, `ID_CONNEX`, `PASS_CONNEX`\n"
-			 . "FROM `UTILISATEUR`\n"
-			 . "INNER JOIN `CLASSE`\n\t"
-			 . "ON `UTILISATEUR`.`NUM_CLASSE` = `CLASSE`.`NUM`\n"
-			 . "WHERE `ID_CONNEX` = \"".$id."\";";
-
+		$sql = "SELECT `ID`, `UTILISATEUR`.`NOM` AS `NOM`, `PRENOM`, `TEL`, `MAIL`, `UTILISATEUR`.`NUM_CLASSE` AS `CLASSE`, `CLASSE`.`NOM` AS `TYPE_DE_COMPTE`, `ID_CONNEX`, `PASS_CONNEX`
+				FROM `UTILISATEUR`
+				INNER JOIN `CLASSE`
+						ON `UTILISATEUR`.`NUM_CLASSE` = `CLASSE`.`NUM`;";
 		try {
 			$res = $bdd->query($sql);
-			$table = $res->fetch(PDO::FETCH_ASSOC);
+			$table = $res->fetchAll(PDO::FETCH_ASSOC);
 		} catch(PDOException $pdoe) {
 			$snack = "Erreur interne, impossible de comparé les identifiants.";
 			$table = array(array());
 		}
 
-		if ($id == $table['ID_CONNEX']) {
+		foreach ($table as $row) {
 
-			// Utilisateur connecté
-			$_SESSION['usr_connected']['id'] = $table['ID'];
-			$_SESSION['usr_connected']['password'] = $mdp;
-			$_SESSION['usr_connected']['nom'] = ucfirst(strtolower($table['NOM']));
-			$_SESSION['usr_connected']['prenom'] = ucfirst(strtolower($table['PRENOM']));
-			$_SESSION['usr_connected']['classe'] = $table['CLASSE'];
-			$_SESSION['usr_connected']['tdc'] = strtolower($table['TYPE_DE_COMPTE']);
+			// Données de connexion présent dans la base
+			$id_bdd = $row['ID_CONNEX'];
+			$pass_bdd = $row['PASS_CONNEX'];
 
-			// et enfin, redirection vers la page d'accueil
-			header('Location: ' . HTML_PATH . 'accueil.php');
-			exit();
+			if ($id == $id_bdd && password_verify($mdp, $pass_bdd)) {
 
-		} else {
-			$snackbar = "Identifiant ou mot de passe incorrect, désolé !";
+				session_start();
+				$_SESSION['usr_connected']['id'] = $row['ID'];
+				$_SESSION['usr_connected']['password'] = $mdp;
+				$_SESSION['usr_connected']['nom'] = ucfirst(strtolower($row['NOM']));
+				$_SESSION['usr_connected']['prenom'] = ucfirst(strtolower($row['PRENOM']));
+				$_SESSION['usr_connected']['classe'] = $row['CLASSE'];
+				$_SESSION['usr_connected']['tdc'] = strtolower($row['TYPE_DE_COMPTE']);
+
+				// et enfin, redirection vers la page d'accueil
+				header('Location: accueil.php');
+				exit();
+			} else {
+				$snackbar = "Identifiant ou mot de passe incorrect, désolé !";
+			}
+
 		}
 
 	} else {
-		$snackbar = "Champ(s) incorrect(s), réessayez !";
+		$snackbar = "Identifiant ou mot de passe incorrect, désolé !";
 	}
 
 }
@@ -117,7 +110,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	<?php
 
 	// Inclusion des éléments placé dans la balise <head>
-	include_once PHP_PATH . "struct/head.php";
+	include_once("struct/head.php");
 	$titre_page = "Connexion". $title;
 	echo '<title>'.$titre_page.'</title>';
 
@@ -154,7 +147,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		<?php
 
 		// Inclusion du pied de page (footer)
-		include_once PHP_PATH . "struct/footer.php";
+		include_once "struct/footer.php";
 
 		?>
 

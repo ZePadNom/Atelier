@@ -6,8 +6,10 @@
  * @version  1.0.0
  */
 
+session_start();
+
 if (!isset($_SESSION['usr_connected'])) {
-	header('location: ' . $_SESSION['HTML_PATH'] . 'utilisateur_inconnu.php');
+	header('location: /atelier_v2/utilisateur_inconnu.php');
 	exit;
 }
 
@@ -17,7 +19,7 @@ if (!isset($_SESSION['usr_connected'])) {
 function deconnexion() {
 	session_unset();
 	session_destroy();
-	header('Location: ' . $_SESSION['HTML_PATH'] . 'index.php');
+	header('Location: /atelier_v2/index.php');
 }
 
 ?>

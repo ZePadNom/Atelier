@@ -8,19 +8,19 @@
  * @version  2.0.4
  */
 
-require_once $_SESSION['PHP_PATH'] . "config.php";
+
 
 /**
  * Créé une icône de navigation (iône + label)
  * @param string $label Label placé sous l'icône
- * @param string $icone Nom de l'icône se trouvant dans images/iconnav/
+ * @param string $icone Nom de l'icône se trouvant dans /atelier_v2/images/iconnav/
  * @param string $action Chemin (lien) vers la page désirée
  * @return string Eléments HTML permettant d'afficher l'icône de navigation (à appeler dans l'en-tête)
  */
 function createIconnav($label, $icone, $action) {
 	$iconnav = '<li class="iconnav">'."\n"
 			 . '<a href="'.$action.'">'."\n"
-			 . '<img src="'.$_SESSION['HTML_PATH'].'/images/iconnav/'.$icone.'" alt="'.$label.'">'."\n"
+			 . '<img src="/atelier_v2/images/iconnav/'.$icone.'" alt="'.$label.'">'."\n"
 			 . '<span>'.$label.'</span>'."\n"
 			 . '</a>'."\n"
 			 . '</li>';
@@ -31,14 +31,12 @@ $nom_header = $_SESSION['usr_connected']['nom'];
 $prenom_header = $_SESSION['usr_connected']['prenom'];
 $tdc = $_SESSION['usr_connected']['tdc'];
 
-define('ADMIN', 1);
-define('ATTP', 1);
-define('AGENT', 1);
+
 
 /**
  * @var int $classe Définit la classe de l'utilisateur, afin de déterminer les éléments du menu à afficher
  * $classe == 1 -> Administrateur
- * $classe == 2 -> Agent chef (attp)
+ * $classe == 2 -> Agent chef
  * $classe == 3 -> Agent
  */
 if (isset($_SESSION['usr_connected']['classe'])) {
@@ -52,59 +50,59 @@ if (isset($_SESSION['usr_connected']['classe'])) {
 
 $menu = "";
 
-if($classe == ADMIN) {
+if($classe == 1) {
 
 	// Tickets
 	$menu = '<div class="vr">'
 		  . '<span class="h">'."Tickets".'</span>'
-		  . createIconnav("Créer", "add.png", $_SESSION['HTML_PATH']."ticket/creer_ticket.php")
-		  . createIconnav("Attribuer", "help.png", $_SESSION['HTML_PATH']."ticket/lister_ticket_attribuer.php")
-		  . createIconnav("En cours", "curr.svg", $_SESSION['HTML_PATH']."ticket/lister_ticket_encours.php")
-		  . createIconnav("Résolu", "check.png", $_SESSION['HTML_PATH']."ticket/lister_ticket_resolu.php")
-		  . createIconnav("Tous", "all.png", $_SESSION['HTML_PATH']."ticket/lister_ticket_tous.php")
+		  . createIconnav("Créer", "add.png", "/atelier_v2/ticket/creer_ticket.php")
+		  . createIconnav("Attribuer", "help.png", "/atelier_v2/ticket/lister_ticket_attribuer.php")
+		  . createIconnav("En cours", "curr.svg", "/atelier_v2/ticket/lister_ticket_encours.php")
+		  . createIconnav("Résolu", "check.png", "/atelier_v2/ticket/lister_ticket_resolu.php")
+		  . createIconnav("Tous", "all.png", "/atelier_v2/ticket/lister_ticket_tous.php")
 		  . '</div>';
 
 	// Historique
 	$menu.= '<div class="vr">'
 		  . '<span class="h">'."&nbsp".'</span>'
-		  . createIconnav("Historique", "histo.svg", $_SESSION['HTML_PATH']."historique/lister_ticket_historique.php")
+		  . createIconnav("Historique", "histo.svg", "/atelier_v2/historique/lister_ticket_historique.php")
 		  . '</div>';
 		  
 	// Admin
 	$menu.= '<div class="vr">'
 		  . '<span class="h">'."Administration".'</span>'
-		  . createIconnav("Utilisateurs", "pers.svg", $_SESSION['HTML_PATH']."administration/utilisateurs.php")
-		  . createIconnav("Lieux", "place.png", $_SESSION['HTML_PATH']."administration/lieu.php")
-		  . createIconnav("Catégories", "cat.png", $_SESSION['HTML_PATH']."administration/categorie.php")
-		  . createIconnav("Purger données", "stor.png", $_SESSION['HTML_PATH']."administration/purger_bdd.php")
+		  . createIconnav("Utilisateurs", "pers.svg", "/atelier_v2/administration/utilisateurs.php")
+		  . createIconnav("Lieux", "place.png", "/atelier_v2/administration/lieu.php")
+		  . createIconnav("Catégories", "cat.png", "/atelier_v2/administration/categorie.php")
+		  . createIconnav("Purger données", "stor.png", "/atelier_v2/administration/purger_bdd.php")
 		  . '</div>';
 
-} elseif($classe == ATTP){
+} elseif($classe == 2){
 					
 	// Tickets	
 	$menu = '<div class="vr">'
 		  . '<span class="h">'."Tickets".'</span>'
-		  . createIconnav("Créer", "add.png", $_SESSION['HTML_PATH']."ticket/creer_ticket.php")
-		  . createIconnav("Attribuer", "help.png", $_SESSION['HTML_PATH']."ticket/lister_ticket_attribuer.php")
-		  . createIconnav("En cours", "curr.svg", $_SESSION['HTML_PATH']."ticket/lister_ticket_encours.php")
-		  . createIconnav("Résolu", "check.png", $_SESSION['HTML_PATH']."ticket/lister_ticket_resolu.php")
-		  . createIconnav("Tous", "all.png", $_SESSION['HTML_PATH']."ticket/lister_ticket_tous.php")
+		  . createIconnav("Créer", "add.png", "/atelier_v2/ticket/creer_ticket.php")
+		  . createIconnav("Attribuer", "help.png", "/atelier_v2/ticket/lister_ticket_attribuer.php")
+		  . createIconnav("En cours", "curr.svg", "/atelier_v2/ticket/lister_ticket_encours.php")
+		  . createIconnav("Résolu", "check.png", "/atelier_v2/ticket/lister_ticket_resolu.php")
+		  . createIconnav("Tous", "all.png", "/atelier_v2/ticket/lister_ticket_tous.php")
 		  . '</div>';
 
 	// Historique
 	$menu.= '<div class="vr">'
 		  . '<span class="h">'."&nbsp".'</span>'
-		  . createIconnav("Historique", "histo.svg", $_SESSION['HTML_PATH']."historique/lister_ticket_historique.php")
+		  . createIconnav("Historique", "histo.svg", "/atelier_v2/historique/lister_ticket_historique.php")
 		  . '</div>';
 
-} elseif ($classe == AGENT) {
+} elseif ($classe == 3) {
 
 	// Tickets	
 	$menu = '<div class="vr">'
 		  . '<span class="h">'."Tickets".'</span>'
-		  . createIconnav("En cours", "curr.svg", $_SESSION['HTML_PATH']."ticket/lister_ticket_encours.php")
-		  . createIconnav("Résolu", "check.png", $_SESSION['HTML_PATH']."ticket/lister_ticket_resolu.php")
-		  . createIconnav("Tous", "all.png", $_SESSION['HTML_PATH']."ticket/lister_ticket_tous.php")
+		  . createIconnav("En cours", "curr.svg", "/atelier_v2/ticket/lister_ticket_encours.php")
+		  . createIconnav("Résolu", "check.png", "/atelier_v2/ticket/lister_ticket_resolu.php")
+		  . createIconnav("Tous", "all.png", "/atelier_v2/ticket/lister_ticket_tous.php")
 		  . '</div>';
 
 }
@@ -132,8 +130,8 @@ $welcome_type = "Vous êtes connecté en tant qu'".$tdc;
 		</div><!--
 	 --><nav class="welcome_nav">
 			<ul>
-				<li class="iconnav_top"><a href="<?php echo $_SESSION['HTML_PATH']; ?>accueil.php" title="Retour à l'accueil"><img src="<?php echo $_SESSION['HTML_PATH']; ?>images/iconnav/home.png" alt="Accueil"><span>Accueil</span></a></li><!--
-			 --><li class="iconnav_top"><a href="<?php echo $_SESSION['HTML_PATH']; ?>php/t_deconnexion.php" title="Fin de la session"><img src="<?php echo $_SESSION['HTML_PATH']; ?>images/iconnav/exit.png" alt="Déconnexion"><span>Déconnexion</span></a></li>
+				<li class="iconnav_top"><a href="/atelier_v2/accueil.php" title="Retour à l'accueil"><img src="/atelier_v2/images/iconnav/home.png" alt="Accueil"><span>Accueil</span></a></li><!--
+			 --><li class="iconnav_top"><a href="/atelier_v2/php/t_deconnexion.php" title="Fin de la session"><img src="/atelier_v2/images/iconnav/exit.png" alt="Déconnexion"><span>Déconnexion</span></a></li>
 			</ul>
 		</nav>
 	</div>

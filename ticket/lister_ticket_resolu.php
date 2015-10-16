@@ -7,7 +7,6 @@
  * @version  1.0.0
  */
 
-session_start();
 
 /*
  * Inclusion(s)
@@ -15,12 +14,12 @@ session_start();
  * ~ Session
  * ~ Connexion à la base
  * ~ Module de tri
- * ~ Snack bar (message d'info)
+ * ~ Snackbar
  */
-include_once $_SESSION['PHP_PATH'] . "struct/session.php";
-include_once $_SESSION['PHP_PATH'] . "bdd/t_connex_bd.php";
-include_once $_SESSION['PHP_PATH'] . "php/classer_tickets.php";
-include_once $_SESSION['PHP_PATH'] . "php/snackbar.php";
+include_once "../struct/session.php";
+include_once "../php/t_connex_bd.php";
+include_once "../php/classer_tickets.php";
+include_once "../php/snackbar.php";
 
 
 $_SESSION['action'] = 'resolu';

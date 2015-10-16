@@ -24,7 +24,7 @@ function snackBar($message){
 			  . "</div>"."\n\t"
 			  . "</div>"."\n";
 
-	$snackbar .= '<script type="text/javascript" src="' . $_SESSION['HTML_PATH'] . 'js/snackbar.js"></script>';
+	$snackbar .= '<script type="text/javascript" src="/atelier_v2/js/snackbar.js"></script>';
 	return $snackbar;
 }
 

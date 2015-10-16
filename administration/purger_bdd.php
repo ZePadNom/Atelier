@@ -9,20 +9,16 @@
  */
 
 
-session_start();
 
 /*
  * Inclusion(s)
  * ------------
  * ~ Session
  * ~ Connexion à la base
- * ~ Fonctions permettant de créer les listes HTML
- * ~ Snack bar (message d'info)
- * ~ Fonction test_input($data)
  */
-include_once $_SESSION['PHP_PATH'] . "struct/session.php";
-include_once $_SESSION['PHP_PATH'] . "bdd/t_connex_bd.php";
-include_once $_SESSION['PHP_PATH'] . "php/snackbar.php";
+include_once "../struct/session.php";
+include_once "../php/t_connex_bd.php";
+
 ?>
 <!DOCTYPE html>
 <html lang="fr-FR">

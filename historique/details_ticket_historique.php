@@ -7,9 +7,9 @@
  * @version  2.0.0
  */
 
-session_start();
 
-/**
+
+/*
  * Inclusion(s)
  * ------------
  * ~ Session
@@ -17,24 +17,23 @@ session_start();
  * ~ Fonction pour obtenir une icone pour l'attribut importance
  * ~ Fonctions permettant de créer les listes HTML
  * ~ Snack bar (message d'info)
- * ~ Retour vers la page précédente
  * ~ Module commentaire
  * ~ Module evolution
- * ~ Module suprresiont
  * ~ Accesseur ticket
  * ~ Accesseur détails
+ * ~ Get back
  */
-include_once $_SESSION['PHP_PATH'] . "struct/session.php";
-include_once $_SESSION['PHP_PATH'] . "bdd/t_connex_bd.php";
-include_once $_SESSION['PHP_PATH'] . "php/get_icon_importance.php";
-include_once $_SESSION['PHP_PATH'] . "php/listes_formulaire.php";
-include_once $_SESSION['PHP_PATH'] . "php/snackbar.php";
-include_once $_SESSION['PHP_PATH'] . 'php/detail_back.php';
-include_once $_SESSION['PHP_PATH'] . "ticket/commentaire/commentaire.php";
-include_once $_SESSION['PHP_PATH'] . "ticket/evolution/evolution.php";
-include_once $_SESSION['PHP_PATH'] . "ticket/supprimer.php";
-include_once $_SESSION['PHP_PATH'] . "ticket/get_ticket.php";
-include_once $_SESSION['PHP_PATH'] . "ticket/get_details.php";
+include_once "../struct/session.php";
+include_once "../php/t_connex_bd.php";
+include_once "../php/get_icon_importance.php";
+include_once "../php/listes_formulaire.php";
+include_once "../php/snackbar.php";
+include_once "../ticket/commentaire/commentaire.php";
+include_once "../ticket/evolution/evolution.php";
+include_once "../ticket/get_ticket.php";
+include_once "../ticket/get_details.php";
+include_once "../ticket/supprimer.php";
+include_once "../php/detail_back.php";
 
 // Récupération de l'identifiant de l'utilisateur connecté
 
@@ -79,7 +78,7 @@ if (isset($_GET['ticketid'])) {
 		?>
 		<section>
 
-			<h1>Détail du ticket dans l'historique</h1>
+			<h1>Détail du ticket à attribuer</h1>
 			<?php
 			echo getBack("Retour à la liste des tickets cloturés", "lister_ticket_historique.php");
 			?>

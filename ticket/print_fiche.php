@@ -16,10 +16,10 @@
  * ~ Connexion à la base
  * ~ Retour (navigation)
  */
-include_once $_SESSION['HTML_PATH'] . "struct/session.php";
-include_once $_SESSION['HTML_PATH'] . "php/t_connex_bd.php";
-include_once $_SESSION['HTML_PATH'] . "php/detail_back.php";
-include_once $_SESSION['HTML_PATH'] . "get_ticket.php";
+include_once "../struct/session.php";
+include_once "../php/t_connex_bd.php";
+include_once "../php/detail_back.php";
+include_once "get_ticket.php";
 
 $liste = "Oups ! c'est vide";
 

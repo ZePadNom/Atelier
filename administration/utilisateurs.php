@@ -7,7 +7,7 @@
  * @version  1.2.0
  */
 
-session_start();
+
 
 /*
  * Inclusion(s)
@@ -18,11 +18,11 @@ session_start();
  * ~ Snack bar (message d'info)
  * ~ Fonction test_input($data)
  */
-include_once $_SESSION['PHP_PATH'] . "struct/session.php";
-include_once $_SESSION['PHP_PATH'] . "bdd/t_connex_bd.php";
-include_once $_SESSION['PHP_PATH'] . "php/snackbar.php";
-include_once $_SESSION['PHP_PATH'] . "php/test_input.php";
+include_once "../struct/session.php";
+include_once "../php/t_connex_bd.php";
+include_once "../php/snackbar.php";
 // include_once "../php/listes_formulaire.php";
+include_once "../php/test_input.php";
 
 $agent = 0;
 $nom = $prenom = $classe = $fonction = $tel = $email = $id_connex = $mdp_connex = $mdpv_connex = NULL;
